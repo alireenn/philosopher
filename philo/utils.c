@@ -3,23 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: evento <evento@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 10:57:35 by anovelli          #+#    #+#             */
-/*   Updated: 2022/06/30 12:58:42 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/07/13 15:25:30 by evento           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosopher.h"
-
-int	check_arguments(t_philo *philo)
-{
-	if (philo->rules->n_philo < 1 || philo->rules->time_to_die < 1
-	|| philo->rules->time_to_eat < 1 || philo->rules->time_to_sleep < 1
-	|| philo->rules->bonus_must_eat < 1)
-		return (0);
-	return (1);
-}
 
 int	ft_atoi(const char *str)
 {
@@ -45,43 +36,3 @@ int	ft_atoi(const char *str)
 	}
 	return (res);
 }
-
-void	init_rules(char **argv, t_philo *philo)
-{
-	philo->rules = malloc(sizeof(t_rules));
-	philo->rules->n_philo = ft_atoi(argv[1]);
-	philo->rules->time_to_die = ft_atoi(argv[2]);
-	philo->rules->time_to_eat = ft_atoi(argv[3]);
-	philo->rules->time_to_sleep = ft_atoi(argv[4]);
-	if (argv[5])
-		philo->rules->bonus_must_eat = ft_atoi(argv[5]);
-}
-
-void	init_philo(t_all *all)
-{
-	int	i;
-	int	j;
-
-	all->philo = malloc(sizeof(t_philo) * (all->philo->rules->n_philo + 1));
-	i = 0;
-	j = 1;
-	while (j < all->philo->rules->n_philo)
-	{
-		fill_philo_struct(all, i, j);
-		i++;
-		j++;
-	}
-	j = 0;
-	fill_philo_struct(all, i, j);
-}
-
-void	fill_philo_struct(t_all *all, int i, int j)
-{
-	all->philo[i].id = i + 1;
-	all->philo[i].num_of_times_ate = 0;
-	all->philo[i].time_to_die = 0;
-	all->philo[i].fork.left = i;
-	all->philo[i].fork.right = j;
-}
-
-
