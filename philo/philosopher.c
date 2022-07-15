@@ -6,13 +6,11 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 16:52:09 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/15 11:12:52 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/07/15 12:21:59 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosopher.h"
-
-
 
 int	main(int argc, char **argv)
 {
@@ -27,9 +25,9 @@ int	main(int argc, char **argv)
 	{
 		rules.must_eat = ft_atoi(argv[5]);
 		if (is_ok(rules.must_eat) == 0)
-			return (printf("no fra, impara a scrivere porcoddio\n"));
+			return (printf("Something is bad... Try again with other parameters\n"));
 	}
 	else
 		rules.must_eat = -1;
-	now_start_this_shit(&rules);
+	now_start_this(&rules);
 }

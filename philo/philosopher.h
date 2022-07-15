@@ -6,7 +6,7 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 16:52:20 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/15 11:14:49 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/07/15 12:24:48 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ typedef struct s_philo
 {
 	int				id;
 	int				n_eat;
-	long long		strv;
+	long long		hungry;
 	int				end;
 	struct s_rules	*rules;
 	pthread_mutex_t	*left;
 	pthread_mutex_t	*right;
 	pthread_t		thread;
-	pthread_t		monitor;
+	pthread_t		did_u_see;
 }				t_philo;
 
 typedef struct s_rules
@@ -60,17 +60,20 @@ typedef struct s_rules
 /*
 **		UTILS.C
 */
-int		is_ok(int n);
-int		ft_atoi(const char *str);
+int			is_ok(int n);
+int			ft_atoi(const char *str);
+long long	what_time_is_it(void);
 /*
 **		INIT.C
 */
-int		init(t_rules *rules, char *argv[]);
-void	init_philo(t_rules *rules);
-int		mutex_init(t_rules *rules);
+void		destroy(t_rules *rules);
+void		init_philo(t_rules *rules);
+int			mutex_init(t_rules *rules);
+int			init(t_rules *rules, char *argv[]);
 /*
 **		START.C
 */
-void	now_start_this_shit(t_rules *rules);
-
+void		now_start_this(t_rules *rules);
+void    	im_hungry(t_philo *philo);
+void		*food(void *philo);
 #endif

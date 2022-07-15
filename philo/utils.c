@@ -6,7 +6,7 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 10:57:35 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/15 11:12:00 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/07/15 13:56:54 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,9 @@ int	is_ok(int n)
 	if (n > __INT_MAX__ || n < 0)
 		return (0);
 	return (1);
+}
+
+long long what_time_is()
+{
+	
 }

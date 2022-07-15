@@ -6,7 +6,7 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 11:12:29 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/15 11:13:03 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/07/15 12:07:24 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,24 @@ void	init_philo(t_rules *rules)
 			rules->philo[i].right = &rules->forks[0];
 		i++;
 	}
+}
+
+void	destroy(t_rules *rules)
+{
+	int		i;
+	t_philo	*philo;
+
+	philo = rules->philo;
+	i = 0;
+	while (i < rules->n_ph)
+	{
+		pthread_mutex_destroy(&rules->forks[i]);
+		pthread_mutex_destroy(&rules->philo_time);
+		i++;
+	}
+	pthread_mutex_destroy(&rules->lock);
+	pthread_mutex_destroy(&rules->die_mutex);
+	pthread_mutex_destroy(&rules->must_eat_mutex);
+	free(philo);
+	free(rules->forks);
 }
