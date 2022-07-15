@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evento <evento@student.42.fr>              +#+  +:+       +#+        */
+/*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 10:57:35 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/13 15:25:30 by evento           ###   ########.fr       */
+/*   Updated: 2022/07/15 11:12:00 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,11 @@ int	ft_atoi(const char *str)
 		i++;
 	}
 	return (res);
+}
+
+int	is_ok(int n)
+{
+	if (n > __INT_MAX__ || n < 0)
+		return (0);
+	return (1);
 }

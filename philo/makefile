@@ -4,7 +4,7 @@ CC=gcc
 
 FLAGS=-Wall -Werror -Wextra
 
-SRC=utils.c
+SRC=utils.c start.c
 
 MAIN=philosopher.c
 

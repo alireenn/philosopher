@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosopher.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evento <evento@student.42.fr>              +#+  +:+       +#+        */
+/*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 16:52:20 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/13 15:37:44 by evento           ###   ########.fr       */
+/*   Updated: 2022/07/15 11:14:49 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,17 @@ typedef struct s_rules
 /*
 **		UTILS.C
 */
-void	init_rules(char **argv, t_philo *philo);
-int		check_and_init(int argc, char **argv, t_rules *rules);
+int		is_ok(int n);
 int		ft_atoi(const char *str);
+/*
+**		INIT.C
+*/
+int		init(t_rules *rules, char *argv[]);
+void	init_philo(t_rules *rules);
+int		mutex_init(t_rules *rules);
+/*
+**		START.C
+*/
+void	now_start_this_shit(t_rules *rules);
 
 #endif
