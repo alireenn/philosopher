@@ -6,11 +6,11 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 16:52:20 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/19 11:15:34 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/07/19 12:46:41 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef PHILOSOPHER_H
+#ifndef PHILOSOPHER_H
 # define PHILOSOPHER_H
 
 # include <stdio.h>
@@ -25,7 +25,6 @@
 # define THINK "is thinking"
 # define FORK "has taken a fork"
 # define DIED "died ☠️"
-
 
 typedef struct s_philo
 {
@@ -63,7 +62,12 @@ typedef struct s_rules
 int			is_ok(int n);
 int			ft_atoi(const char *str);
 long long	what_time_is_it(void);
+void		ft_tell_me(t_philo *philo, int id, char *str);
 void		pezzott_sleep(long long time);
+/*
+**		UTILS2.C
+*/
+void		ft_routine(t_philo *philo);
 /*
 **		INIT.C
 */
@@ -75,7 +79,7 @@ int			init(t_rules *rules, char *argv[]);
 **		START.C
 */
 void		now_start_this(t_rules *rules);
-void    	im_hungry(t_philo *philo);
+void		im_hungry(t_philo *philo);
 void		*food(void *philo);
 void		ft_loop(void *philo);
 int			ft_is_over(t_philo *ph, int temp, int i, int check);

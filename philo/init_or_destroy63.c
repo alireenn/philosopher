@@ -6,11 +6,11 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 11:12:29 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/19 10:45:21 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/07/19 12:46:30 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philosopher.c"
+#include "philosopher.h"
 
 int	mutex_init(t_rules *rules)
 {
@@ -56,7 +56,7 @@ int	init(t_rules *rules, char *argv[])
 void	init_philo(t_rules *rules)
 {
 	int	i;
-       
+
 	i = 0;
 	while (i < rules->n_ph)
 	{

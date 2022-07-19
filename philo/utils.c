@@ -6,7 +6,7 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 10:57:35 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/19 11:15:22 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/07/19 12:43:20 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	is_ok(int n)
 	return (1);
 }
 
-long long what_time_is(void)
+long long	what_time_is(void)
 {
 	struct timeval	time;
 
@@ -56,7 +56,7 @@ void	ft_tell_me(t_philo *philo, int id, char *str)
 {
 	pthread_mutex_lock(&philo->rules->lock);
 	printf("%lld ", what_time_is() - philo->rules->start);
-	printf("%d %s\n", id, str);   
+	printf("%d %s\n", id, str);
 	pthread_mutex_unlock(&philo->rules->lock);
 }
 
