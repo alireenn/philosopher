@@ -6,7 +6,7 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 16:52:20 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/19 12:46:41 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/07/19 12:54:25 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ void		pezzott_sleep(long long time);
 **		UTILS2.C
 */
 void		ft_routine(t_philo *philo);
+int			is_over_helper(t_philo *phi, int temp, int it);
+void		ft_take_fork(t_philo *philo);
 /*
 **		INIT.C
 */

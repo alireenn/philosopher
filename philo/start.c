@@ -6,7 +6,7 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 11:03:02 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/19 12:46:12 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/07/19 12:53:41 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,17 @@ void	*food(void *philo)
 	}
 }
 
+	/*	// pthread_mutex_lock(&ph->rules->philo_time);
+		// temp = what_time_is_it() - ph->rules->start - ph[it].hungry;
+		// pthread_mutex_unlock(&ph->rules->philo_time);
+		// if (temp > ph->rules->time_to_die)
+		// {
+		// 	ft_kill(ph);
+		// 	usleep(2000);
+		// 	ft_tell_me(&ph[i], ph[i].id, DIED);
+		// 	return (1);
+		// }
+		*/
 int	ft_is_over(t_philo *ph, int temp, int i, int check)
 {
 	int	it;
@@ -54,16 +65,8 @@ int	ft_is_over(t_philo *ph, int temp, int i, int check)
 	check = 0;
 	while (it < ph->rules->n_ph)
 	{
-		pthread_mutex_lock(&ph->rules->philo_time);
-		temp = what_time_is_it() - ph->rules->start - ph[it].hungry;
-		pthread_mutex_unlock(&ph->rules->philo_time);
-		if (temp > ph->rules->time_to_die)
-		{
-			ft_kill(ph);
-			usleep(2000);
-			ft_tell_me(&ph[i], ph[i].id, DIED);
+		if (is_over_helper(ph, temp, it) == 1)
 			return (1);
-		}
 		if (check_mutex(1, &ph[i]))
 			check++;
 		i++;
