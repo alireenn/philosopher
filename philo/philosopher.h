@@ -6,7 +6,7 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 16:52:20 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/15 12:24:48 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/07/19 11:15:34 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct s_philo
 typedef struct s_rules
 {
 	long long		n_ph;
-	long long		time_death;
+	long long		time_to_die;
 	long long		time_eat;
 	long long		time_sleep;
 	long long		must_eat;
@@ -63,6 +63,7 @@ typedef struct s_rules
 int			is_ok(int n);
 int			ft_atoi(const char *str);
 long long	what_time_is_it(void);
+void		pezzott_sleep(long long time);
 /*
 **		INIT.C
 */
@@ -76,4 +77,6 @@ int			init(t_rules *rules, char *argv[]);
 void		now_start_this(t_rules *rules);
 void    	im_hungry(t_philo *philo);
 void		*food(void *philo);
+void		ft_loop(void *philo);
+int			ft_is_over(t_philo *ph, int temp, int i, int check);
 #endif

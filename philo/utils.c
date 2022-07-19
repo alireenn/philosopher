@@ -6,7 +6,7 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 10:57:35 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/15 13:56:54 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/07/19 11:15:22 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,28 @@ int	is_ok(int n)
 	return (1);
 }
 
-long long what_time_is()
+long long what_time_is(void)
 {
-	
+	struct timeval	time;
+
+	gettimeofday(&time, NULL);
+	return ((time.tv_sec * 1000) + (time.tv_usec / 1000));
+}
+
+void	ft_tell_me(t_philo *philo, int id, char *str)
+{
+	pthread_mutex_lock(&philo->rules->lock);
+	printf("%lld ", what_time_is() - philo->rules->start);
+	printf("%d %s\n", id, str);   
+	pthread_mutex_unlock(&philo->rules->lock);
+}
+
+void	pezzott_sleep(long long time)
+{
+	long long	tmp;
+
+	tmp = what_time_is();
+	usleep(time * 1000 - 20000);
+	while (what_time_is() < tmp + time)
+		continue ;
 }

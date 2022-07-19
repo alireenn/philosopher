@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   init_or_destroy63.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 11:12:29 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/15 12:07:24 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/07/19 10:45:21 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ int	init(t_rules *rules, char *argv[])
 {
 	rules = malloc (sizeof(t_rules) * rules->n_ph);
 	rules->n_ph = ft_atoi(argv[1]);
-	rules->time_death = ft_atoi(argv[2]);
+	rules->time_to_die = ft_atoi(argv[2]);
 	rules->time_eat = ft_atoi(argv[3]);
 	rules->time_sleep = ft_atoi(argv[4]);
 	rules->die = 1;
-	if (is_ok(rules->n_ph) == 1 || is_ok(rules->time_death) == 1
+	if (is_ok(rules->n_ph) == 1 || is_ok(rules->time_to_die) == 1
 		|| is_ok(rules->time_eat) == 1 || is_ok(rules->time_sleep) == 1)
 		return (1);
 	if (mutex_init(rules) == 1)
