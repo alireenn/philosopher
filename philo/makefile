@@ -2,7 +2,7 @@ NAME=philosopher
 
 CC=gcc
 
-FLAGS=-Wall -Werror -Wextra
+FLAGS=-Wall -Werror -Wextra #-fsanitize=address -g3
 
 SRC=utils.c start.c init_or_destroy63.c utils2.c
 

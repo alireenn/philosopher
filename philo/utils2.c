@@ -6,7 +6,7 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 11:55:07 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/20 14:57:47 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/07/20 16:08:04 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,7 @@ int	is_over_helper(t_philo *phi, long long temp, int it)
 	{
 		ft_tell_me(&phi[it], phi[it].id, DIED);
 		im_hungry(phi);
-		destroy(phi->rules);
-		return (1);
+		return(1);
 	}
 	return (0);
 }
