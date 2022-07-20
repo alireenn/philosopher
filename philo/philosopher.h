@@ -6,7 +6,7 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 16:52:20 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/19 12:54:25 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/07/20 14:39:12 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct s_philo
 
 typedef struct s_rules
 {
-	long long		n_ph;
+	int				n_ph;
 	long long		time_to_die;
 	long long		time_eat;
 	long long		time_sleep;
@@ -68,8 +68,9 @@ void		pezzott_sleep(long long time);
 **		UTILS2.C
 */
 void		ft_routine(t_philo *philo);
-int			is_over_helper(t_philo *phi, int temp, int it);
-void		ft_take_fork(t_philo *philo);
+int			is_over_helper(t_philo *phi, long long temp, int it);
+int			ft_take_fork(t_philo *philo);
+int			check_mutex(int n, t_philo *phiii);
 /*
 **		INIT.C
 */
@@ -84,5 +85,5 @@ void		now_start_this(t_rules *rules);
 void		im_hungry(t_philo *philo);
 void		*food(void *philo);
 void		ft_loop(void *philo);
-int			ft_is_over(t_philo *ph, int temp, int i, int check);
+int			ft_is_over(t_philo *ph, long long temp, int i, int check);
 #endif
