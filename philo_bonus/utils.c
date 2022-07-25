@@ -6,7 +6,7 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 15:14:07 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/21 16:18:19 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/07/25 16:58:05 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ int	ft_atoi(const char *str)
 
 int	is_ok(int n)
 {
-	if (n > __INT_MAX__ || n < 0)
-		return (0);
-	return (1);
+	if (n < __INT_MAX__ || n > 0)
+		return (1);
+	return (0);
 }
 
 long long	what_time_is_it(void)

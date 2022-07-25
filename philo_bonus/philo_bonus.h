@@ -6,7 +6,7 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 11:22:53 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/21 16:22:03 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/07/25 16:58:30 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,27 +25,24 @@ typedef struct s_philo
 {
 	int				id;
 	int				n_eat;
-	long long		now_die;
-	int				end;
-	pthread_t		process;
+	pid_t			pid;
+	sem_t			end;
+	sem_t			finish_eat;
+	pthread_t		thread;
 	struct s_rules	*rules;
 }				t_philo;
 
 typedef struct s_rules
 {
-	int				n_ph;
-	long long		time_to_die;
-	long long		time_eat;
-	long long		time_sleep;
-	long long		must_eat;
-	long long		start;
-	int				die;
-	pthread_mutex_t	*forks;
-	pthread_mutex_t	lock;
-	pthread_mutex_t	die_mutex;
-	pthread_mutex_t	must_eat_mutex;
-	pthread_mutex_t	philo_time;
-	t_philo			*philo;
+	int			n_ph;
+	long long	time_to_die;
+	long long	time_eat;
+	long long	time_sleep;
+	long long	must_eat;
+	long long	start;
+	int			die;
+	sem_t		*forks;
+	t_philo		*philo;
 }				t_rules;
  /*
  **	init.c

@@ -6,7 +6,7 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 11:22:18 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/21 15:11:59 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/07/25 16:50:25 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ int	main(int argc, char **argv)
 	rules = malloc (sizeof(t_rules) * ft_atoi(argv[1]));
 	if (!rules)
 		return (0);
-	if (!init(rules, argv))
+	if (init(rules, argv) == 0)
 		return (printf("wrong arguments\n"));
 	if (argc == 6)
 	{
 		(*rules).must_eat = ft_atoi(argv[5]);
 		if (is_ok((*rules).must_eat) == 0)
-			return (printf("Something is bad... \
+			return (printf("Something is bad...\
 			Try again with other parameters\n"));
 	}
 	else

@@ -6,7 +6,7 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 15:12:30 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/21 16:20:41 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/07/25 16:50:12 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	init(t_rules *rules, char *argv[])
 		|| !is_ok(rules->time_eat) || !is_ok(rules->time_sleep))
 		return (0);
 	return (1);
-	
 }
 
 void	now_start_this(t_rules *rules)
