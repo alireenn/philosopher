@@ -4,7 +4,7 @@ CC=gcc
 
 FLAGS=-Wall -Werror -Wextra #-fsanitize=address -g3
 
-SRC=init.c utils.c
+SRC=init_bonus.c utils_bonus.c start_bonus.c talk_bonus.c
 
 MAIN=philo_bonus.c
 

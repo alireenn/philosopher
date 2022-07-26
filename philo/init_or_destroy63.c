@@ -6,7 +6,7 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 11:12:29 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/21 11:03:06 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/07/26 13:06:04 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,14 @@ int	mutex_init(t_rules *rules)
 	return (1);
 }
 
-int	init(t_rules *rules, char *argv[])
+int	init(t_rules *rules, char *argv[], int argv)
 {
+	if (!ft_check(argc, argv))
 	rules->n_ph = ft_atoi(argv[1]);
 	rules->time_to_die = ft_atoi(argv[2]);
 	rules->time_eat = ft_atoi(argv[3]);
 	rules->time_sleep = ft_atoi(argv[4]);
 	rules->die = 1;
-	if (!is_ok(rules->n_ph) || !is_ok(rules->time_to_die)
-		|| !is_ok(rules->time_eat) || !is_ok(rules->time_sleep))
-		return (0);
 	rules->philo = (t_philo *) malloc (sizeof(t_philo) * rules->n_ph);
 	if (rules->philo == NULL)
 		return (0);
@@ -59,11 +57,6 @@ void	init_philo(t_rules *rules)
 		rules->philo[i].n_eat = 0;
 		rules->philo[i].end = 0;
 		rules->philo[i].rules = rules;
-		rules->philo[i].left = &rules->forks[i];
-		rules->philo[i].right = &rules->forks[i + 1];
-		if (i == rules->n_ph - 1)
-			rules->philo[i].right = &rules->forks[0];
-		pthread_mutex_init(&rules->forks[i], NULL);
 		i++;
 	}
 }

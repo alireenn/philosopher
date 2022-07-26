@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo_bonus.c                                      :+:      :+:    :+:   */
+/*   talk_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/21 11:22:18 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/26 15:37:56 by anovelli         ###   ########.fr       */
+/*   Created: 2022/07/26 16:05:38 by anovelli          #+#    #+#             */
+/*   Updated: 2022/07/26 16:29:12 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
 
-int	main(int argc, char **argv)
+void	ft_tell_me(t_philo *philo, int id, char *str)
 {
-	t_rules	*rules;
+	sem_wait(philo->rules->mess);
+	printf("%lld ", what_time_is_it() - philo->rules->start);
+	printf("%d %s\n", id, str);
+	sem_post(philo->rules->mess);
+}
 
-	if (argc != 5 && argc != 6)
-		return (printf("Wrong amount of arguments\n"));
-	rules = malloc (sizeof(t_rules) * ft_atoi(argv[1]));
-	if (!rules)
-		return (printf("E' esploso il malloc\n"));
-	if (init(rules, argv, argc) == 0)
-		return (printf("wrong arguments\n"));
-	init_philo(rules);
-	now_start_this(rules);
-	// free (rules);
+void	pezzott_sleep(long long time)
+{
+	long long	tmp;
+
+	tmp = what_time_is_it();
+	usleep(time * 1000 - 20000);
+	while (what_time_is_it() < tmp + time)
+		continue ;
 }

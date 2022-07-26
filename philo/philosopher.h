@@ -6,7 +6,7 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 16:52:20 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/20 14:39:12 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/07/26 13:06:26 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ typedef struct s_rules
 /*
 **		UTILS.C
 */
-int			is_ok(int n);
+int			ft_check(int argc, char **argv);
 int			ft_atoi(const char *str);
 long long	what_time_is_it(void);
 void		ft_tell_me(t_philo *philo, int id, char *str);
@@ -77,7 +77,7 @@ int			check_mutex(int n, t_philo *phiii);
 void		destroy(t_rules *rules);
 void		init_philo(t_rules *rules);
 int			mutex_init(t_rules *rules);
-int			init(t_rules *rules, char *argv[]);
+int			init(t_rules *rules, char *argv[], int argc);
 /*
 **		START.C
 */

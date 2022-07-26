@@ -6,7 +6,7 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 10:57:35 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/20 10:57:41 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/07/26 13:04:53 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,30 @@ int	ft_atoi(const char *str)
 	return (res);
 }
 
-int	is_ok(int n)
+int	is_digit_or_space(char c)
 {
-	if (n > __INT_MAX__ || n < 0)
-		return (0);
+	if (c == ' ' || (c >= '0' && c <= '9'))
+		return (1);
+	return (0);
+}
+
+int	ft_check(int argc, char **argv)
+{
+	int	i;
+	int	j;
+
+	i = 1;
+	while (i != argc)
+	{
+		j = 0;
+		while (argv[i][j] != '\0')
+		{
+			if (!is_digit_or_space(argv[i][j]))
+				return (0);
+			j++;
+		}
+		i++;
+	}
 	return (1);
 }
 
