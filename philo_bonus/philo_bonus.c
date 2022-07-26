@@ -6,7 +6,7 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 11:22:18 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/26 15:37:56 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/07/26 17:04:44 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,5 @@ int	main(int argc, char **argv)
 		return (printf("wrong arguments\n"));
 	init_philo(rules);
 	now_start_this(rules);
-	// free (rules);
+	free (rules);
 }

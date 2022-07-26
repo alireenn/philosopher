@@ -6,7 +6,7 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 11:22:53 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/26 16:40:33 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/07/26 17:04:24 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ void		now_start_this(t_rules *rules);
 void		*all_soreta_things(void *philo);
 void		*monitor(void *philo);
 void		now_start_this(t_rules *rules);
+void		*eat63(void	*rul);
 /*
 **  talk.c
 */
