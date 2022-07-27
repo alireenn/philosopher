@@ -6,7 +6,7 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 11:22:53 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/27 10:08:24 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/07/27 11:32:44 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,30 +32,27 @@
 typedef struct s_philo
 {
 	int				id;
-	int				n_al_eat;
 	int				n_eat;
 	long long		last_eat;
 	pid_t			pid;
-	sem_t			end;
 	pthread_t		death;
 	struct s_rules	*rules;
 }				t_philo;
 
 typedef struct s_rules
 {
-	int			n_ph;
-	int			n_eat;
-	int			die;
 	long long	time_to_die;
 	long long	start;
 	long long	time_eat;
 	long long	time_sleep;
+	int			n_to_eat;
+	int			n_ph;
 	sem_t		*fork;
 	sem_t		*mess;
 	sem_t		*must_eat;
 	sem_t		*dead;
-	pthread_t	finish_eat;
 	t_philo		*philo;
+	pthread_t	finish_eat;
 }				t_rules;
 
  /*
@@ -64,7 +61,7 @@ typedef struct s_rules
 int			init(t_rules *rules, char *argv[], int argc);
 void		init_philo(t_rules *rules);
 sem_t		*sem_in(char *message, int n);
-int			initrules(t_rules *rules);
+int			initrules(t_rules *rules, int argc, char **argv);
  /*
  **	utils.c
  */
