@@ -6,20 +6,22 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 11:22:53 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/26 17:04:24 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/07/27 09:55:14 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_BONUS_H
 # define PHILO_BONUS_H
 
-# include <semaphore.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <pthread.h>
-# include <stdlib.h>
-# include <limits.h>
 # include <sys/time.h>
+# include <sys/types.h>
+# include <semaphore.h>
+# include <pthread.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <signal.h>
+# include <limits.h>
+# include <stdio.h>
 
 # define EAT "is eating"
 # define SLEEP "is sleeping"
@@ -82,4 +84,5 @@ void		*eat63(void	*rul);
 */
 void		ft_tell_me(t_philo *philo, int id, char *str);
 void		pezzott_sleep(long long time);
+int			finish(t_philo *philo);
 #endif
