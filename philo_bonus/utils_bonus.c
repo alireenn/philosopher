@@ -6,7 +6,7 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 15:14:07 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/27 11:10:18 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/07/27 17:05:42 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ int	ft_check(int argc, char **argv)
 	}
 	return (1);
 }
-
 
 long long	what_time_is_it(void)
 {

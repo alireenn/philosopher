@@ -6,7 +6,7 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 11:22:53 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/27 11:38:30 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/07/27 17:04:19 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,16 +55,16 @@ typedef struct s_rules
 	pthread_t	finish_eat;
 }				t_rules;
 
- /*
- **	init.c
- */
+/*
+**	init.c
+*/
 void		init_philo(t_rules *rules);
 int			init(t_rules *rules, char *argv[], int argc);
 sem_t		*sem_in(char *message, int n);
 int			initrules(t_rules *rules, int argc, char **argv);
- /*
- **	utils.c
- */
+/*
+**	utils.c
+*/
 int			ft_check(int argc, char **argv);
 int			is_digit_or_space(char c);
 int			ft_atoi(const char *str);

@@ -6,7 +6,7 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 15:38:57 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/27 11:28:16 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/07/27 17:05:31 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	finish(t_philo *philo)
 {
 	long long	time;
 
-	time = (what_time_is_it() - philo->rules->start- philo->last_eat);
+	time = (what_time_is_it() - philo->rules->start - philo->last_eat);
 	if (time > philo->rules->time_to_die)
 	{
 		sem_wait(philo->rules->mess);
@@ -36,7 +36,7 @@ void	*monitor(void *phi)
 {
 	t_philo		*philo;
 
-	philo = phi;;
+	philo = phi;
 	while (1)
 	{
 		if (finish(philo) == 1)

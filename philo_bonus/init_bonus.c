@@ -6,7 +6,7 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 15:12:30 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/27 11:39:57 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/07/27 17:03:39 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 sem_t	*sem_in(char *message, int n)
 {
-	sem_t *semmy;
+	sem_t	*semmy;
 
 	semmy = sem_open(message, O_CREAT | O_EXCL, 0644, n);
 	if (semmy == SEM_FAILED)
@@ -47,11 +47,11 @@ int	initrules(t_rules *rules, int argc, char **argv)
 
 int	init(t_rules *rules, char *argv[], int argc)
 {
-	if(!ft_check(argc, argv))
+	if (!ft_check(argc, argv))
 		return (0);
 	if (!rules->n_to_eat)
 		rules->n_to_eat = -1;
-	if(!initrules(rules, argc, argv))
+	if (!initrules(rules, argc, argv))
 		return (0);
 	return (1);
 }
