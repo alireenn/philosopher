@@ -6,7 +6,7 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 15:38:57 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/27 09:57:33 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/07/27 10:07:45 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	*all_soreta_things(void *philo)
 		sem_wait(phi->rules->fork);
 		ft_tell_me(phi, phi->id, FORK);
 		ft_tell_me(phi, phi->id, EAT);
-		phi->n_eat++ ;
+		phi->n_al_eat++;
 		phi->last_eat = what_time_is_it() - phi->rules->start;
 		pezzott_sleep(phi->rules->time_eat);
 		sem_post(phi->rules->fork);
@@ -84,10 +84,17 @@ void	now_start_this(t_rules *rules)
 		pthread_create(&rules->finish_eat, NULL, eat63, rules);
 	while (i <= rules->n_ph)
 	{
-		philo[i].id = fork();
-		if (philo[i].id == 0)
+		philo[i].pid = fork();
+		if (philo[i].pid == 0)
 			all_soreta_things(&philo[i]);
 		i++;
 	}
 	sem_wait(rules->dead);
+	i = 0;
+	while (i < rules->n_ph)
+	{
+		kill(rules->philo[i].pid, 9);
+		i++;
+	}
+	exit (0);
 }

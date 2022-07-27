@@ -6,7 +6,7 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 16:05:38 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/27 09:56:51 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/07/27 10:06:04 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	finish(t_philo *philo)
 		sem_post(philo->rules->dead);
 		return (1);
 	}
-	if (philo->n_eat == philo->rules->n_eat)
+	if (philo->n_al_eat == philo->rules->n_eat)
 	{
 		sem_post(philo->rules->must_eat);
 		return (1);

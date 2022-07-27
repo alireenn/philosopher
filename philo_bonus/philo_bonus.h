@@ -6,7 +6,7 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 11:22:53 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/27 09:55:14 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/07/27 10:08:24 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 typedef struct s_philo
 {
 	int				id;
+	int				n_al_eat;
 	int				n_eat;
 	long long		last_eat;
 	pid_t			pid;
