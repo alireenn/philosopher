@@ -6,7 +6,7 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 15:12:30 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/27 11:34:44 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/07/27 11:39:57 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,18 @@ int	init(t_rules *rules, char *argv[], int argc)
 	if(!initrules(rules, argc, argv))
 		return (0);
 	return (1);
+}
+
+void	init_philo(t_rules *rules)
+{
+	int		i;
+
+	i = 0;
+	while (i < rules->n_ph)
+	{
+		rules->philo[i].id = i + 1;
+		rules->philo[i].rules = rules;
+		rules->philo[i].n_eat = 0;
+		i++;
+	}
 }

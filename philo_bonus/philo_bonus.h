@@ -6,7 +6,7 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 11:22:53 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/27 11:32:44 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/07/27 11:38:30 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ typedef struct s_rules
  /*
  **	init.c
  */
-int			init(t_rules *rules, char *argv[], int argc);
 void		init_philo(t_rules *rules);
+int			init(t_rules *rules, char *argv[], int argc);
 sem_t		*sem_in(char *message, int n);
 int			initrules(t_rules *rules, int argc, char **argv);
  /*
