@@ -6,7 +6,7 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 11:12:29 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/26 13:06:04 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/07/27 16:47:24 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,23 @@ int	mutex_init(t_rules *rules)
 	pthread_mutex_init(&rules->die_mutex, NULL);
 	pthread_mutex_init(&rules->must_eat_mutex, NULL);
 	pthread_mutex_init(&rules->philo_time, NULL);
-	rules->forks = (pthread_mutex_t *)malloc (sizeof(pthread_mutex_t) * ph + 1);
+	rules->forks = (pthread_mutex_t *)malloc (sizeof(pthread_mutex_t) * ph);
 	if (rules->forks == NULL)
 		return (0);
 	i = 0;
+	while (i < rules->n_ph)
+	{
+		pthread_mutex_init(&rules->forks[i], NULL);
+		i++;
+	}
 	init_philo(rules);
 	return (1);
 }
 
-int	init(t_rules *rules, char *argv[], int argv)
+int	init(t_rules *rules, char *argv[], int argc)
 {
 	if (!ft_check(argc, argv))
+		return (0);
 	rules->n_ph = ft_atoi(argv[1]);
 	rules->time_to_die = ft_atoi(argv[2]);
 	rules->time_eat = ft_atoi(argv[3]);
@@ -57,6 +63,10 @@ void	init_philo(t_rules *rules)
 		rules->philo[i].n_eat = 0;
 		rules->philo[i].end = 0;
 		rules->philo[i].rules = rules;
+		rules->philo[i].left = &rules->forks[i];
+		rules->philo[i].right = &rules->forks[i + 1];
+		if (i == rules->n_ph - 1)
+			rules->philo[i].right = &rules->forks[0];
 		i++;
 	}
 }
@@ -71,12 +81,12 @@ void	destroy(t_rules *rules)
 	while (i < rules->n_ph)
 	{
 		pthread_mutex_destroy(&rules->forks[i]);
-		pthread_mutex_destroy(&rules->philo_time);
 		i++;
 	}
 	pthread_mutex_destroy(&rules->lock);
 	pthread_mutex_destroy(&rules->die_mutex);
 	pthread_mutex_destroy(&rules->must_eat_mutex);
+	pthread_mutex_destroy(&rules->philo_time);
 	free(philo);
 	free(rules->forks);
 }

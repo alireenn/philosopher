@@ -6,7 +6,7 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 10:57:35 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/26 13:04:53 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/07/27 17:01:38 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	ft_check(int argc, char **argv)
 	while (i != argc)
 	{
 		j = 0;
-		while (argv[i][j] != '\0')
+		while (argv[i][j])
 		{
 			if (!is_digit_or_space(argv[i][j]))
 				return (0);
@@ -70,14 +70,6 @@ long long	what_time_is_it(void)
 
 	gettimeofday(&time, NULL);
 	return ((time.tv_sec * 1000) + (time.tv_usec / 1000));
-}
-
-void	ft_tell_me(t_philo *philo, int id, char *str)
-{
-	pthread_mutex_lock(&philo->rules->lock);
-	printf("%lld ", what_time_is_it() - philo->rules->start);
-	printf("%d %s\n", id, str);
-	pthread_mutex_unlock(&philo->rules->lock);
 }
 
 void	pezzott_sleep(long long time)

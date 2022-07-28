@@ -6,7 +6,7 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 11:55:07 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/20 16:08:04 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/07/27 17:02:13 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,18 @@ void	ft_routine(t_philo *philo)
 		ft_tell_me(philo, philo->id, THINK);
 }
 
-int	is_over_helper(t_philo *phi, long long temp, int it)
+int	is_over_helper(t_philo *phi, int it)
 {
+	long long	temp;
+
 	pthread_mutex_lock(&phi->rules->philo_time);
 	temp = what_time_is_it() - phi->rules->start - phi[it].hungry;
 	pthread_mutex_unlock(&phi->rules->philo_time);
 	if (temp > phi->rules->time_to_die)
 	{
-		ft_tell_me(&phi[it], phi[it].id, DIED);
+		ft_tell_me(phi, phi[it].id, DIED);
 		im_hungry(phi);
-		return(1);
+		return (1);
 	}
 	return (0);
 }
@@ -69,4 +71,12 @@ int	check_mutex(int n, t_philo *phiii)
 		pthread_mutex_unlock(&phiii->rules->must_eat_mutex);
 	}
 	return (temp);
+}
+
+void	ft_tell_me(t_philo *philo, int id, char *str)
+{
+	pthread_mutex_lock(&philo->rules->lock);
+	printf("%lld ", what_time_is_it() - philo->rules->start);
+	printf("%d %s\n", id, str);
+	pthread_mutex_unlock(&philo->rules->lock);
 }

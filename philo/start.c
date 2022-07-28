@@ -6,7 +6,7 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 11:03:02 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/20 16:18:04 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/07/28 13:32:18 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,20 @@ void	*food(void *philo)
 	t_philo	*phiiii;
 
 	phiiii = philo;
-
+	// pthread_mutex_lock(&phiiii->rules->must_eat_mutex);
 	phiiii->hungry = what_time_is_it() - phiiii->rules->start;
+	// pthread_mutex_unlock(&phiiii->rules->must_eat_mutex);
 	if (phiiii->id % 2 == 0)
-	 	pezzott_sleep(60);
+		pezzott_sleep(60);
 	while (check_mutex(0, phiiii))
 	{
 		if (ft_take_fork(phiiii) == 1)
 			break ;
 		if (check_mutex(0, phiiii) == 1)
 			ft_tell_me(phiiii, phiiii->id, EAT);
+		// pthread_mutex_lock(&phiiii->rules->must_eat_mutex);
 		phiiii->hungry = what_time_is_it() - phiiii->rules->start;
+		// pthread_mutex_unlock(&phiiii->rules->must_eat_mutex);
 		phiiii->n_eat++;
 		if (phiiii->n_eat == phiiii->rules->must_eat)
 		{
@@ -47,16 +50,16 @@ void	*food(void *philo)
 	return (NULL);
 }
 
-int	ft_is_over(t_philo *ph, long long temp, int i, int check)
+int	ft_is_over(t_philo *ph, int check)
 {
 	int	it;
 
 	it = 0;
 	while (it < ph->rules->n_ph)
 	{
-		if (is_over_helper(ph, temp, it) == 1)
+		if (is_over_helper(ph, it) == 1)
 			return (1);
-		if (check_mutex(1, &ph[i]))
+		if (check_mutex(1, &ph[it]))
 			check++;
 		it++;
 	}
@@ -68,23 +71,19 @@ int	ft_is_over(t_philo *ph, long long temp, int i, int check)
 	return (0);
 }
 
-void	ft_loop(void *philo)
+void	*ft_loop(void *philo)
 {
 	t_philo			*phiiii;
-	long long		tmp;
-	int				i;
 	int				check;
 
 	check = 0;
-	tmp = 0;
-	i = 0;
 	phiiii = philo;
-	usleep(30);
 	while (1)
 	{
-		if (ft_is_over(phiiii, tmp, i, check) == 1)
+		if (ft_is_over(phiiii, check) == 1)
 			break ;
 	}
+	return (NULL);
 }
 
 void	now_start_this(t_rules *rules)

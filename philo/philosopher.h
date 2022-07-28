@@ -6,7 +6,7 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 16:52:20 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/26 13:06:26 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/07/27 17:02:27 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void		pezzott_sleep(long long time);
 **		UTILS2.C
 */
 void		ft_routine(t_philo *philo);
-int			is_over_helper(t_philo *phi, long long temp, int it);
+int			is_over_helper(t_philo *phi, int it);
 int			ft_take_fork(t_philo *philo);
 int			check_mutex(int n, t_philo *phiii);
 /*
@@ -84,6 +84,6 @@ int			init(t_rules *rules, char *argv[], int argc);
 void		now_start_this(t_rules *rules);
 void		im_hungry(t_philo *philo);
 void		*food(void *philo);
-void		ft_loop(void *philo);
-int			ft_is_over(t_philo *ph, long long temp, int i, int check);
+void		*ft_loop(void *philo);
+int			ft_is_over(t_philo *ph, int check);
 #endif
