@@ -6,7 +6,7 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 11:22:53 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/27 17:04:19 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/07/29 09:56:07 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,21 +66,21 @@ int			initrules(t_rules *rules, int argc, char **argv);
 **	utils.c
 */
 int			ft_check(int argc, char **argv);
-int			is_digit_or_space(char c);
 int			ft_atoi(const char *str);
+int			is_digit_or_space(char c);
 long long	what_time_is_it(void);
-void		now_start_this(t_rules *rules);
+void		pezzott_sleep(long long time);
 /*
 **	start.c
 */
+int			finish(t_philo *philo);
+void		now_start_this(t_rules *rules);
 void		*all_soreta_things(void *philo);
 void		*monitor(void *philo);
-void		now_start_this(t_rules *rules);
 void		*eat63(void	*rul);
 /*
-**  talk.c
+**	utils2.c
 */
 void		ft_tell_me(t_philo *philo, int id, char *str);
-void		pezzott_sleep(long long time);
-int			finish(t_philo *philo);
+int			is_one(t_rules *rules);
 #endif

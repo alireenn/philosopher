@@ -6,7 +6,7 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 15:14:07 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/27 17:05:42 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/07/28 13:00:34 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,14 +70,6 @@ long long	what_time_is_it(void)
 
 	gettimeofday(&time, NULL);
 	return ((time.tv_sec * 1000) + (time.tv_usec / 1000));
-}
-
-void	ft_tell_me(t_philo *philo, int id, char *str)
-{
-	sem_wait(philo->rules->mess);
-	printf("%lld ", what_time_is_it() - philo->rules->start);
-	printf("%d %s\n", id, str);
-	sem_post(philo->rules->mess);
 }
 
 void	pezzott_sleep(long long time)

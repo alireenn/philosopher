@@ -6,7 +6,7 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 11:55:07 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/27 17:02:13 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/07/29 14:19:29 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 int	ft_take_fork(t_philo *philo)
 {
+	if (philo->rules->n_ph == 1)
+		return (1);
 	pthread_mutex_lock(philo->right);
 	if (check_mutex(0, philo))
 		ft_tell_me(philo, philo->id, FORK);
-	if (philo->rules->n_ph == 1)
-		return (1);
 	pthread_mutex_lock(philo->left);
 	if (check_mutex(0, philo))
 		ft_tell_me(philo, philo->id, FORK);
@@ -75,8 +75,15 @@ int	check_mutex(int n, t_philo *phiii)
 
 void	ft_tell_me(t_philo *philo, int id, char *str)
 {
+	char	*tmpid;
+	char	*time;
+	int		timeint;
+
+	tmpid = ft_itoa(id);
+	timeint = what_time_is_it() - philo->rules->start;
+	time = ft_itoa(timeint);
 	pthread_mutex_lock(&philo->rules->lock);
-	printf("%lld ", what_time_is_it() - philo->rules->start);
-	printf("%d %s\n", id, str);
+	ft_putstr(str, tmpid, time);
+	// printf("%lld %d %s\n", what_time_is_it() - philo->rules->start, id, str);
 	pthread_mutex_unlock(&philo->rules->lock);
 }

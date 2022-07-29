@@ -6,7 +6,7 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 11:03:02 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/28 13:32:18 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/07/29 14:05:34 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,31 +21,28 @@ void	im_hungry(t_philo *philo)
 
 void	*food(void *philo)
 {
-	t_philo	*phiiii;
+	t_philo	*phi;
 
-	phiiii = philo;
-	// pthread_mutex_lock(&phiiii->rules->must_eat_mutex);
-	phiiii->hungry = what_time_is_it() - phiiii->rules->start;
-	// pthread_mutex_unlock(&phiiii->rules->must_eat_mutex);
-	if (phiiii->id % 2 == 0)
+	phi = philo;
+	pthread_mutex_lock(&phi->rules->must_eat_mutex);
+	phi->hungry = what_time_is_it() - phi->rules->start;
+	pthread_mutex_unlock(&phi->rules->must_eat_mutex);
+	if (phi->id % 2 == 0)
 		pezzott_sleep(60);
-	while (check_mutex(0, phiiii))
+	while (check_mutex(0, phi))
 	{
-		if (ft_take_fork(phiiii) == 1)
+		if (ft_take_fork(phi) == 1)
 			break ;
-		if (check_mutex(0, phiiii) == 1)
-			ft_tell_me(phiiii, phiiii->id, EAT);
-		// pthread_mutex_lock(&phiiii->rules->must_eat_mutex);
-		phiiii->hungry = what_time_is_it() - phiiii->rules->start;
-		// pthread_mutex_unlock(&phiiii->rules->must_eat_mutex);
-		phiiii->n_eat++;
-		if (phiiii->n_eat == phiiii->rules->must_eat)
+		if (check_mutex(0, phi) == 1)
+			ft_tell_me(phi, phi->id, EAT);
+		food_helper(phi);
+		if (phi->n_eat == phi->rules->must_eat)
 		{
-			pthread_mutex_lock(&phiiii->rules->die_mutex);
-			phiiii->end = 1;
-			pthread_mutex_unlock(&phiiii->rules->die_mutex);
+			pthread_mutex_lock(&phi->rules->die_mutex);
+			phi->end = 1;
+			pthread_mutex_unlock(&phi->rules->die_mutex);
 		}
-		ft_routine(phiiii);
+		ft_routine(phi);
 	}
 	return (NULL);
 }

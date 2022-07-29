@@ -6,12 +6,14 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 16:52:09 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/27 16:50:56 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/07/29 14:34:56 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosopher.h"
-
+/*
+**		OGNI TANTO VA MALE IL SALVATAGGIO DEL TEMPO
+*/
 int	main(int argc, char **argv)
 {
 	t_rules	rules;
@@ -20,6 +22,13 @@ int	main(int argc, char **argv)
 		return (printf("Wrong amount of arguments\n"));
 	if (!init(&rules, argv, argc))
 		return (printf("wrong arguments\n"));
+	if (ft_atoi(argv[1]) == 1)
+	{
+		printf("%lld %d %s\n", rules.start, rules.philo->id, FORK);
+		printf("%d %d %s\n", ft_atoi(argv[2]) + 1, rules.philo->id, DIED);
+		destroy(&rules);
+		return (0);
+	}
 	if (argc == 6)
 	{
 		rules.must_eat = ft_atoi(argv[5]);

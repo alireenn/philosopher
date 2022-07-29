@@ -6,7 +6,7 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 15:38:57 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/27 17:05:31 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/07/29 12:07:43 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,8 @@ void	now_start_this(t_rules *rules)
 
 	i = 0;
 	rules->start = what_time_is_it();
+	if (is_one(rules) == 1)
+		exit (0);
 	if (rules->n_to_eat != -1)
 		pthread_create(&rules->finish_eat, NULL, eat63, rules);
 	while (i < rules->n_ph)
@@ -112,7 +114,7 @@ void	now_start_this(t_rules *rules)
 	i = 0;
 	while (i < rules->n_ph)
 	{
-		kill(rules->philo[i].pid, SIGKILL);
+		kill(rules->philo[i].pid, 9);
 		i++;
 	}
 	exit (0);

@@ -6,7 +6,7 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 16:52:20 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/27 17:02:27 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/07/29 13:55:39 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,15 +62,22 @@ typedef struct s_rules
 int			ft_check(int argc, char **argv);
 int			ft_atoi(const char *str);
 long long	what_time_is_it(void);
-void		ft_tell_me(t_philo *philo, int id, char *str);
 void		pezzott_sleep(long long time);
 /*
 **		UTILS2.C
 */
+void		ft_tell_me(t_philo *philo, int id, char *str);
 void		ft_routine(t_philo *philo);
 int			is_over_helper(t_philo *phi, int it);
 int			ft_take_fork(t_philo *philo);
 int			check_mutex(int n, t_philo *phiii);
+/*
+**	utils3.c
+*/
+void		food_helper(t_philo *philo);
+char		*ft_itoa(int n);
+size_t		get_digits(int n);
+void		ft_putstr(char *str, char *id, char *time);
 /*
 **		INIT.C
 */
