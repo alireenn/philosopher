@@ -6,7 +6,7 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 11:55:07 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/29 14:19:29 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/08/03 11:35:56 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,5 @@ void	ft_tell_me(t_philo *philo, int id, char *str)
 	time = ft_itoa(timeint);
 	pthread_mutex_lock(&philo->rules->lock);
 	ft_putstr(str, tmpid, time);
-	// printf("%lld %d %s\n", what_time_is_it() - philo->rules->start, id, str);
 	pthread_mutex_unlock(&philo->rules->lock);
 }

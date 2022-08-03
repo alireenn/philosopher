@@ -6,14 +6,12 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 16:52:09 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/29 14:34:56 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/08/03 12:50:07 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosopher.h"
-/*
-**		OGNI TANTO VA MALE IL SALVATAGGIO DEL TEMPO
-*/
+
 int	main(int argc, char **argv)
 {
 	t_rules	rules;

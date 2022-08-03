@@ -6,7 +6,7 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 11:05:34 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/29 13:55:41 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/08/03 13:05:14 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ char	*ft_itoa(int n)
 	}
 	if (n < 0)
 		*(str_num + 0) = '-';
+	free (str_num);
 	return (str_num);
 }
 
