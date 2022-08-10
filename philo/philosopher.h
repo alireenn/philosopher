@@ -6,7 +6,7 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 16:52:20 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/29 13:55:39 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/08/10 16:40:26 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ int			check_mutex(int n, t_philo *phiii);
 void		food_helper(t_philo *philo);
 char		*ft_itoa(int n);
 size_t		get_digits(int n);
-void		ft_putstr(char *str, char *id, char *time);
 /*
 **		INIT.C
 */

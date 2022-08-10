@@ -6,7 +6,7 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 11:05:34 by anovelli          #+#    #+#             */
-/*   Updated: 2022/08/03 13:05:14 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/08/10 16:40:02 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,31 +61,4 @@ char	*ft_itoa(int n)
 		*(str_num + 0) = '-';
 	free (str_num);
 	return (str_num);
-}
-
-void	ft_putstr(char *str, char *id, char *time)
-{
-	int	i;
-
-	i = 0;
-	while (time[i])
-	{
-		write(1, &time[i], 1);
-		i++;
-	}
-	i = 0;
-	write(1, " ", 1);
-	while (id[i])
-	{
-		write(1, &id[i], 1);
-		i++;
-	}
-	i = 0;
-	write(1, " ", 1);
-	while (str[i])
-	{
-		write(1, &str[i], 1);
-		i++;
-	}
-	write(1, "\n", 1);
 }

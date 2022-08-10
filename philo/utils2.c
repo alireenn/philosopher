@@ -6,7 +6,7 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 11:55:07 by anovelli          #+#    #+#             */
-/*   Updated: 2022/08/03 11:35:56 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/08/10 17:12:20 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,36 +53,32 @@ int	is_over_helper(t_philo *phi, int it)
 	return (0);
 }
 
-int	check_mutex(int n, t_philo *phiii)
+int	check_mutex(int n, t_philo *philo)
 {
 	int	temp;
 
 	temp = 0;
 	if (n == 0)
 	{
-		pthread_mutex_lock(&phiii->rules->die_mutex);
-		temp = phiii->rules->die;
-		pthread_mutex_unlock(&phiii->rules->die_mutex);
+		pthread_mutex_lock(&philo->rules->die_mutex);
+		temp = philo->rules->die;
+		pthread_mutex_unlock(&philo->rules->die_mutex);
 	}
-	else if (n == 1)
+	else
 	{
-		pthread_mutex_lock(&phiii->rules->must_eat_mutex);
-		temp = phiii->end;
-		pthread_mutex_unlock(&phiii->rules->must_eat_mutex);
+		pthread_mutex_lock(&philo->rules->must_eat_mutex);
+		temp = philo->end;
+		pthread_mutex_unlock(&philo->rules->must_eat_mutex);
 	}
 	return (temp);
 }
 
 void	ft_tell_me(t_philo *philo, int id, char *str)
 {
-	char	*tmpid;
-	char	*time;
 	int		timeint;
 
-	tmpid = ft_itoa(id);
-	timeint = what_time_is_it() - philo->rules->start;
-	time = ft_itoa(timeint);
 	pthread_mutex_lock(&philo->rules->lock);
-	ft_putstr(str, tmpid, time);
+	timeint = what_time_is_it() - philo->rules->start;
+	printf("%d %d %s\n", timeint, id, str);
 	pthread_mutex_unlock(&philo->rules->lock);
 }
