@@ -6,7 +6,7 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 13:00:07 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/29 09:52:00 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/08/11 13:09:01 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@ void	ft_tell_me(t_philo *philo, int id, char *str)
 	printf("%lld ", what_time_is_it() - philo->rules->start);
 	printf("%d %s\n", id, str);
 	sem_post(philo->rules->mess);
+}
+
+void	ft_tell_me_die(t_philo *philo, int id, char *str)
+{
+	printf("%lld ", what_time_is_it() - philo->rules->start);
+	printf("%d %s\n", id, str);
 }
 
 int	is_one(t_rules *rules)

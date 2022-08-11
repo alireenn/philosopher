@@ -6,7 +6,7 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 11:22:53 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/29 09:56:07 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/08/11 13:08:16 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,5 @@ void		*eat63(void	*rul);
 */
 void		ft_tell_me(t_philo *philo, int id, char *str);
 int			is_one(t_rules *rules);
+void		ft_tell_me_die(t_philo *philo, int id, char *str);
 #endif
