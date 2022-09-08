@@ -6,7 +6,7 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 15:38:57 by anovelli          #+#    #+#             */
-/*   Updated: 2022/08/11 13:07:51 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/08/11 13:43:52 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	finish(t_philo *philo)
 	if ((int)time > (int)philo->rules->time_to_die)
 	{
 		sem_wait(philo->rules->mess);
-		printf("\033[91m\nporcoddio\n\033[0m");
 		ft_tell_me_die(philo, philo->id, DIED);
 		sem_post(philo->rules->dead);
 		return (1);
@@ -116,6 +115,5 @@ void	now_start_this(t_rules *rules)
 		kill(rules->philo[i].pid, 9);
 		i++;
 	}
-	printf("\n			\033[92mSONO ARRIVATO\033[0m\n");
 	exit(0);
 }

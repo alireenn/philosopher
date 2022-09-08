@@ -6,7 +6,7 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 15:12:30 by anovelli          #+#    #+#             */
-/*   Updated: 2022/07/27 17:03:39 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/08/11 13:23:13 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ sem_t	*sem_in(char *message, int n)
 int	initrules(t_rules *rules, int argc, char **argv)
 {
 	rules->n_ph = ft_atoi(argv[1]);
+	if (rules->n_ph <= 0)
+		return (0);
 	rules->time_to_die = ft_atoi(argv[2]);
 	rules->time_eat = ft_atoi(argv[3]);
 	rules->time_sleep = ft_atoi(argv[4]);

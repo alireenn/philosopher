@@ -6,7 +6,7 @@
 /*   By: anovelli <anovelli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 11:12:29 by anovelli          #+#    #+#             */
-/*   Updated: 2022/08/03 12:50:35 by anovelli         ###   ########.fr       */
+/*   Updated: 2022/08/11 13:37:18 by anovelli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,16 @@ int	mutex_init(t_rules *rules)
 	return (1);
 }
 
+int	is_neg(t_rules *rules)
+{
+	if (rules->n_ph <= 0
+		|| rules->time_to_die <= 0
+		|| rules->time_eat <= 0
+		|| rules->time_sleep <= 0)
+		return (0);
+	return (1);
+}
+
 int	init(t_rules *rules, char *argv[], int argc)
 {
 	if (!ft_check(argc, argv))
@@ -46,6 +56,8 @@ int	init(t_rules *rules, char *argv[], int argc)
 	rules->die = 1;
 	rules->philo = (t_philo *) malloc (sizeof(t_philo) * rules->n_ph);
 	if (rules->philo == NULL)
+		return (0);
+	if (!is_neg(rules))
 		return (0);
 	if (mutex_init(rules))
 		return (1);
